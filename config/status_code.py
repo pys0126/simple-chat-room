@@ -1,7 +1,9 @@
 from enum import Enum
 
+
 class StatusCode(Enum):
-    SUCCESS: int = 2000
-    ERROR: int = 4000
-    NOTFOUND: int = 4040
-    LOGIN_ERROR: int = 4030
+    SUCCESS = 2000
+    ERROR = 5000
+    NOTFOUND = 4040
+    LOGIN_ERROR = 4030
+    REGISTER_ERROR = 4031

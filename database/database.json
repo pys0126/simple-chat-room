@@ -1,20 +1,19 @@
 {
-    "user_list": [
+    "user": [
         {
-            "id": 1,
+            "user_id": 1,
             "username": "admin",
             "nikename": "主人",
             "password": "xxx"
         },
         {
-            "id": 2,
+            "user_id": 2,
             "username": "root",
             "nikename": "小猫咪",
             "password": "xxx"
         }
     ],
-    "user_count": 2,
-    "message_list": [
+    "message": [
         {
             "user_id": 1,
             "content": "test"

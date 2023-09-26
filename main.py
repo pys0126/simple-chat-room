@@ -1,11 +1,8 @@
-from flask import Flask
-from flask_cors import CORS
-from controller.chat_controller import chat_blueprint
+import os
+from config.project_config import ProjectConfig
 
-app: Flask = Flask(__name__)
-CORS(app=app)
-
-app.register_blueprint(chat_blueprint, url_prefix="/chat")
+# 定义启动命令
+command: str = f"gunicorn init:app -b {ProjectConfig.host}:{ProjectConfig.port} -w {ProjectConfig.workers}"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9898, debug=True)
+    os.system(command=command)
