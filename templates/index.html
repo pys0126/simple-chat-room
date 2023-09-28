@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易聊天室</title>
+    <link href="//unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet">
+    <script src="//unpkg.com/layui@2.8.17/dist/layui.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div class="layui-row" id="title">
+            <h1>Simple Chat Room</h1>
+        </div>
+
+        <div class="layui-row" style="margin-top: 10px;">
+            <div class="layui-panel" id="panel">
+                <div class="layui-row">
+                    <div class="layui-col-xs2 content">
+                        <img src="https://cdn3.iconfinder.com/data/icons/leto-user-group/64/__user_person_profile-512.png" alt="avatar" id="avatar">
+                        <h1 style="margin-bottom: 10px;">Admin</h1>
+                        <button type="button" class="layui-btn layui-btn-normal" style="border-radius: 10px;">Logout</button>
+                    </div>
+                    <div class="layui-col-xs10 content">
+                        <h1 style="margin-top: 15px;">Chat Content</h1>
+                        <iframe id="iframe">
+
+                        </iframe>
+                        <div class="layui-row layui-col-space10" style="margin-top: 10px;">
+                            <div class="layui-col-xs8">
+                                <input type="text" name="message-input" placeholder="说点什么..." class="layui-input" id="input">
+                            </div>
+                            <div class="layui-col-xs4">
+                                <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid" style="border-radius: 10px;">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <p>&copy; 2023 <a href="https://uodrad.tk" target="_blank" style="color: royalblue;">UodRad</a>. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+<script>
+
+</script>
+
+<style>
+    #title {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(88, 106, 185, 0.7);
+        border-radius: 10px;
+    }
+
+    .content {
+        padding: 0 25px;
+        height: 600px;
+    }
+
+    .layui-btn {
+        color: black;
+    }
+
+    #input {
+        border: 0;
+        border-radius: 5px;
+        background-color: #cfd6f3;
+    }
+
+    #iframe{
+        margin-top: 10px;
+        border-radius: 10px;
+        border-color: #0f2c86;
+        width: 100%;
+        height: 60%;
+    }
+
+    #panel {
+        background-color: rgba(104, 104, 177, 0.5);
+        color: black;
+        border: 0;
+        border-radius: 10px;
+    }
+
+    #avatar {
+        width: 80px;
+        height: 80px;
+        background-color: royalblue;
+        border-radius: 20px;
+        margin-top: 60%;
+        margin-bottom: 10px;
+    }
+
+    body {
+        background-image: url("https://cdn.pixabay.com/photo/2023/08/06/15/29/heaven-8173189_1280.jpg");
+        background-repeat: no-repeat; /* 禁止背景图片重复 */
+        background-size: cover; /* 调整背景图片大小以填充整个容器 */
+        background-attachment: fixed; /* 背景图片固定不移动 */
+        padding: 20px 300px;
+    }
+
+    #main {
+        text-align: center;
+    }
+</style>
+</html>

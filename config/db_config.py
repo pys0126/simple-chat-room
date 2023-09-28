@@ -7,22 +7,11 @@ class DatabaseConfig:
     origin_db_content: dict = {
         "user": [
             {
-                "user_id": 1,
+                "user_id": "8187d8b0-331b-4b33-95e5-3e7007b35af5",
+                "nikename": "管理员",
                 "username": "admin",
-                "nikename": "主人",
-                "password": "xxx"
-            },
-            {
-                "user_id": 2,
-                "username": "root",
-                "nikename": "小猫咪",
-                "password": "xxx"
+                "password": "e10adc3949ba59abbe56e057f20f883e"
             }
         ],
-        "message": [
-            {
-                "user_id": 1,
-                "content": "test"
-            }
-        ]
+        "message": []
     }

@@ -1,21 +1,21 @@
 {
     "user": [
         {
-            "user_id": 1,
+            "user_id": "8187d8b0-331b-4b33-95e5-3e7007b35af5",
+            "nikename": "管理员",
             "username": "admin",
-            "nikename": "主人",
-            "password": "xxx"
+            "password": "e10adc3949ba59abbe56e057f20f883e"
         },
         {
-            "user_id": 2,
+            "user_id": "579fe3ef-22a7-4dd8-b2e3-4cf4617c4ec1",
+            "nikename": "uodrad",
             "username": "root",
-            "nikename": "小猫咪",
-            "password": "xxx"
+            "password": "e10adc3949ba59abbe56e057f20f883e"
         }
     ],
     "message": [
         {
-            "user_id": 1,
+            "user_id": "579fe3ef-22a7-4dd8-b2e3-4cf4617c4ec1",
             "content": "test"
         }
     ]

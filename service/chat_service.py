@@ -1,4 +1,5 @@
 from logic.chat_logic import ChatLogic
+from entity.chat_entity import ChatEntity
 
 
 class ChatService:
@@ -7,7 +8,11 @@ class ChatService:
         return ChatLogic()
 
     @staticmethod
-    def select_message_list(chat_logic_object: ChatLogic) -> list:
+    def send_message(chat_logic_object: ChatLogic, chat_entity: ChatEntity) -> None:
+        chat_logic_object.send_message(chat_entity=chat_entity)
+
+    @staticmethod
+    def message_list(chat_logic_object: ChatLogic) -> list:
         return chat_logic_object.select_message_list()
 
     @staticmethod

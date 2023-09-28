@@ -16,6 +16,10 @@ class UserService:
         user_logic_object.register(user_entity=user_entity)
 
     @staticmethod
+    def logout(user_logic_object: UserLogic, user_id: str) -> None:
+        user_logic_object.logout(user_id=user_id)
+
+    @staticmethod
     def select_user_info_list(user_logic_object: UserLogic) -> list:
         return user_logic_object.select_user_info_list()
 

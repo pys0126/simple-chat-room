@@ -20,7 +20,13 @@ def login() -> Response:
 def register() -> Response:
     user_entity: UserEntity = user_decoder.decode(s=request.data.decode("u8"))
     UserService.register(user_logic_object=user_logic_object, user_entity=user_entity)
-    return jsonify(code=StatusCode.SUCCESS.value, message="ok")
+    return jsonify(code=StatusCode.SUCCESS.value, message="成功")
+
+
+@user_blueprint.route(rule="/logout/<string:user_id>", methods=["POST"])
+def logout(user_id: str) -> Response:
+    UserService.logout(user_logic_object=user_logic_object, user_id=user_id)
+    return jsonify(code=StatusCode.SUCCESS.value, message="成功")
 
 
 @user_blueprint.route(rule="/user_info_list", methods=["GET"])
@@ -29,7 +35,7 @@ def user_info_list() -> Response:
                    data=UserService.select_user_info_list(user_logic_object=user_logic_object))
 
 
-@user_blueprint.route(rule="/user_info_by_id/{string:user_id}", methods=["POST"])
+@user_blueprint.route(rule="/user_info_by_id/<string:user_id>", methods=["POST"])
 def user_info_by_id(user_id: str) -> Response:
     return jsonify(code=StatusCode.SUCCESS.value,
                    data=UserService.select_user_info_by_id(user_logic_object=user_logic_object, user_id=user_id))
