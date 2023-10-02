@@ -17,33 +17,85 @@
                 <div class="layui-row">
                     <div class="layui-col-xs2 content">
                         <img src="https://cdn3.iconfinder.com/data/icons/leto-user-group/64/__user_person_profile-512.png" alt="avatar" id="avatar">
-                        <h1 style="margin-bottom: 10px;">Admin</h1>
-                        <button type="button" class="layui-btn layui-btn-normal" style="border-radius: 10px;">Logout</button>
+                        <h1 style="margin-bottom: 10px;" id="username">None</h1>
+                        <button type="button" class="layui-btn layui-btn-normal" style="border-radius: 10px;" onclick="logout()">Logout</button>
                     </div>
                     <div class="layui-col-xs10 content">
                         <h1 style="margin-top: 15px;">Chat Content</h1>
-                        <iframe id="iframe">
-
-                        </iframe>
+                        <iframe id="iframe" src="/message"></iframe>
                         <div class="layui-row layui-col-space10" style="margin-top: 10px;">
                             <div class="layui-col-xs8">
                                 <input type="text" name="message-input" placeholder="说点什么..." class="layui-input" id="input">
                             </div>
                             <div class="layui-col-xs4">
-                                <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid" style="border-radius: 10px;">Send Message</button>
+                                <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid" style="border-radius: 10px;" onclick="sendMessage()">Send Message</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-            <p>&copy; 2023 <a href="https://uodrad.tk" target="_blank" style="color: royalblue;">UodRad</a>. All rights reserved.</p>
+            <p>&copy; 2023 <a href="https://www.uodrad.top" target="_blank" style="color: royalblue;">UodRad</a>. All rights reserved.</p>
         </div>
     </div>
 </body>
 
 <script>
+    const domain = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
 
+    let user_info = {};
+    fetch(domain + "/user/now_user_info", {method: "GET", redirect: "follow"})
+        .then(response => response.text())
+        .then(result => {
+            const response = JSON.parse(result);
+            const username = document.querySelector("#username");
+            user_info = response.data;
+            username.innerHTML = user_info.nikename;
+        })
+        .catch(error => console.log("Error", error));
+    console.log(user_info);
+
+    function logout() {
+        const requestOptions = {
+           method: "POST",
+           redirect: "follow"
+        };
+
+        fetch(domain + "/user/logout/" + user_info.user_id, requestOptions)
+           .then(response => response.text())
+           .then(result => {
+               const response = JSON.parse(result);
+               alert(response.message);
+               window.localStorage.clear();
+               window.location.reload();
+           })
+           .catch(error => console.log("Error", error));
+    }
+
+    function sendMessage() {
+        const input_tag = document.querySelector("#input");
+
+        const raw = JSON.stringify({
+            "user_id": user_info.user_id,
+            "content": input_tag.value
+        });
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch(domain + "/chat/send_message", requestOptions)
+           .then(response => response.text())
+           .then(result => {
+               input_tag.value = "";
+           })
+           .catch(error => console.log('error', error));
+    }
 </script>
 
 <style>

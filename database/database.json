@@ -7,16 +7,22 @@
             "password": "e10adc3949ba59abbe56e057f20f883e"
         },
         {
-            "user_id": "579fe3ef-22a7-4dd8-b2e3-4cf4617c4ec1",
+            "user_id": "6a051e48-eecf-4f07-b9cd-09ebe76fb19c",
             "nikename": "uodrad",
-            "username": "root",
+            "username": "uodrad",
             "password": "e10adc3949ba59abbe56e057f20f883e"
         }
     ],
     "message": [
         {
-            "user_id": "579fe3ef-22a7-4dd8-b2e3-4cf4617c4ec1",
-            "content": "test"
+            "user_id": "6a051e48-eecf-4f07-b9cd-09ebe76fb19c",
+            "content": "test",
+            "timestamp": 1696249369.647881
+        },
+        {
+            "user_id": null,
+            "content": "你好",
+            "timestamp": 1696262064.8053625
         }
     ]
 }

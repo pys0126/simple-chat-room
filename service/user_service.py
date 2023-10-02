@@ -20,13 +20,13 @@ class UserService:
         user_logic_object.logout(user_id=user_id)
 
     @staticmethod
-    def select_user_info_list(user_logic_object: UserLogic) -> list:
-        return user_logic_object.select_user_info_list()
-
-    @staticmethod
     def select_user_info_by_id(user_logic_object: UserLogic, user_id: str) -> dict:
         return user_logic_object.select_user_info_by_id(user_id=user_id)
 
     @staticmethod
     def select_user_count(user_logic_object: UserLogic) -> int:
         return user_logic_object.select_user_count()
+
+    @staticmethod
+    def select_now_user_info(user_logic_object: UserLogic) -> dict:
+        return user_logic_object.select_now_user_info()

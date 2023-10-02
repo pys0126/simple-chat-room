@@ -7,3 +7,4 @@ class StatusCode(Enum):
     NOTFOUND = 4040
     LOGIN_ERROR = 4030
     REGISTER_ERROR = 4031
+    ACCESS_DENIED = 4090
