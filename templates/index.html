@@ -23,14 +23,16 @@
                     <div class="layui-col-xs10 content">
                         <h1 style="margin-top: 15px;">Chat Content</h1>
                         <iframe id="iframe" src="/message"></iframe>
-                        <div class="layui-row layui-col-space10" style="margin-top: 10px;">
-                            <div class="layui-col-xs8">
-                                <input type="text" name="message-input" placeholder="说点什么..." class="layui-input" id="input">
+                        <form onsubmit="return sendMessage()">
+                            <div class="layui-row layui-col-space10" style="margin-top: 10px;">
+                                <div class="layui-col-xs8">
+                                    <input type="text" name="message-input" placeholder="说点什么..." class="layui-input" id="input">
+                                </div>
+                                <div class="layui-col-xs4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid" style="border-radius: 10px;" onclick="sendMessage()">Send Message</button>
+                                </div>
                             </div>
-                            <div class="layui-col-xs4">
-                                <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid" style="border-radius: 10px;" onclick="sendMessage()">Send Message</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
