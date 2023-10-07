@@ -21,6 +21,7 @@
             .then(response => response.text())
             .then(result => {
                 const message_data_list = JSON.parse(result).data;
+                message_data_list.sort((a, b) => b.timestamp - a.timestamp);
                 if (message_count !== message_data_list.length) {
                     if (message_data_list === []) {
                         document.body.innerHTML = `

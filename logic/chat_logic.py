@@ -19,7 +19,6 @@ class ChatLogic:
         message_list: list = self.db_handel.get("message", [])
         if not message_list:
             return self.db_handel.get("message", [])
-        message_list.sort(key=lambda message: message.get("timestamp"))
         return message_list
 
     def select_message_count(self) -> int:
