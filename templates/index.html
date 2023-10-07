@@ -75,6 +75,11 @@
     function sendMessage() {
         const input_tag = document.querySelector("#input");
 
+        if (!input_tag.value) {
+            alert("请输入消息");
+            return;
+        }
+
         const raw = JSON.stringify({
             "user_id": user_info.user_id,
             "content": input_tag.value

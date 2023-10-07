@@ -13,29 +13,51 @@
 <script>
     const domain = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
 
+    let message_count = 0;
+
     // 500ms run
     window.setInterval(function () {
             fetch(domain + "/chat/message_list", {method: "GET"})
             .then(response => response.text())
             .then(result => {
                 const message_data_list = JSON.parse(result).data;
-                if (message_data_list === []) {
-                    document.body.innerHTML = `
-                    <div class="layui-panel" id="message-panel" style="margin-bottom: 10px; padding: 10px; border: 0; border-radius: 5px; color: black; background-color: rgba(0, 0, 50, 0.3);">
-                        <p>No Message...</p>
-                    </div>`;
-                } else {
-                    for (const message_data of message_data_list) {
-                        fetch(domain + "/user/user_info_by_id/" + message_data.user_id, {method: "POST"})
-                        .then(response => response.text()).then(result => {
-                                const user_info = JSON.parse(result).data;
-                                document.body.innerHTML += `
-                                <div class="layui-panel" id="message-panel" style="margin-bottom: 10px; padding: 10px; border: 0; border-radius: 5px; color: black; background-color: rgba(0, 0, 50, 0.3);">
-                                    <p style="font-weight: bold; color: cornflowerblue; display: inline-block; margin-right: 3px;">` + user_info.nikename + ":</p><p style='font-weight: bold; display: inline-block;'>" + message_data.content + `</p>
-                                </div>`;
+                if (message_count !== message_data_list.length) {
+                    if (message_data_list === []) {
+                        document.body.innerHTML = `
+                            <div class="layui-panel" id="message-panel" style="margin-bottom: 10px; padding: 10px; border: 0; border-radius: 5px; color: black; background-color: rgba(0, 0, 50, 0.3);">
+                                <p>No Message...</p>
+                            </div>`;
+                    } else {
+                        if (message_count === 0 || message_count < message_data_list.length) {
+                            document.body.innerHTML = "";
+                            for (const message_data of message_data_list) {
+                                const dateTime = timestampToDate(message_data.timestamp);
+                                fetch(domain + "/user/user_info_by_id/" + message_data.user_id, {method: "POST"})
+                                    .then(response => response.text()).then(result => {
+                                        const user_info = JSON.parse(result).data;
+                                        document.body.innerHTML += `
+                                            <div class="layui-panel" id="message-panel" style="margin-bottom: 10px; padding: 10px; border: 0; border-radius: 5px; color: black; background-color: rgba(0, 0, 50, 0.3);">
+                                                <p style="font-weight: bold; color: cornflowerblue; display: inline-block; margin-right: 3px;">[` + dateTime + "] " + user_info.nikename + ":</p><p style='font-weight: bold; display: inline-block;'>" + message_data.content + `</p>
+                                            </div>`;
+                                    }
+                                ).catch(error => console.log(error));
                             }
-                        ).catch(error => console.log(error));
+                        } else {
+                            for (const message_data of message_data_list.slice(message_count, message_data_list.length)) {
+                                const dateTime = timestampToDate(message_data.timestamp);
+                                fetch(domain + "/user/user_info_by_id/" + message_data.user_id, {method: "POST"})
+                                    .then(response => response.text()).then(result => {
+                                        const user_info = JSON.parse(result).data;
+                                        document.body.innerHTML += `
+                                            <div class="layui-panel" id="message-panel" style="margin-bottom: 10px; padding: 10px; border: 0; border-radius: 5px; color: black; background-color: rgba(0, 0, 50, 0.3);">
+                                                <p style="font-weight: bold; color: cornflowerblue; display: inline-block; margin-right: 3px;">[` + dateTime + "] " + user_info.nikename + ":</p><p style='font-weight: bold; display: inline-block;'>" + message_data.content + `</p>
+                                            </div>`;
+                                    }
+                                ).catch(error => console.log(error));
+                            }
+                        }
                     }
+                    message_count = message_data_list.length;
                 }
             })
             .catch(error => {
@@ -46,5 +68,21 @@
             });
         }
     , 500);
+
+    function timestampToDate(timestamp) {
+        // 创建Date对象并传入时间戳
+        const date = new Date(timestamp * 1000);
+
+        // 获取日期和时间的各个部分
+        const year = date.getFullYear(); // 年份
+        const month = date.getMonth() + 1; // 月份（注意要加1，月份从0开始）
+        const day = date.getDate(); // 日期
+        const hour = date.getHours(); // 小时
+        const minute = date.getMinutes(); // 分钟
+        const second = date.getSeconds(); // 秒数
+
+        // 拼接成日期字符串
+        return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    }
 </script>
 </html>
