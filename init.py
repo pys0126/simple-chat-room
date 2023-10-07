@@ -13,9 +13,8 @@ CORS(app=app)
 
 @app.before_request
 def before_api_request():
-    if not request.path.endswith("/user/login") and not request.path.endswith("/user/register"):
-        if not session.get("user"):
-            return render_template("login.html")
+    if not session.get("user"):
+        return render_template("login.html")
 
 
 @app.route("/", methods=["GET"])
