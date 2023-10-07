@@ -14,45 +14,5 @@
         }
     ],
     "message": [
-        {
-            "user_id": "6a051e48-eecf-4f07-b9cd-09ebe76fb19c",
-            "content": "test",
-            "timestamp": 1696249369.647881
-        },
-        {
-            "user_id": "8187d8b0-331b-4b33-95e5-3e7007b35af5",
-            "content": "hello",
-            "timestamp": 1696650808.0039396
-        },
-        {
-            "user_id": "6a051e48-eecf-4f07-b9cd-09ebe76fb19c",
-            "content": "宝贝",
-            "timestamp": 1696664232.5909524
-        },
-        {
-            "user_id": "0a89c583-f3fc-4d0a-b474-8d278ee025da",
-            "content": "彭幺二",
-            "timestamp": 1696664240.3607063
-        },
-        {
-            "user_id": "0a89c583-f3fc-4d0a-b474-8d278ee025da",
-            "content": "彭幺二",
-            "timestamp": 1696664243.3896298
-        },
-        {
-            "user_id": "0a89c583-f3fc-4d0a-b474-8d278ee025da",
-            "content": "彭幺二",
-            "timestamp": 1696664246.4838507
-        },
-        {
-            "user_id": "6a051e48-eecf-4f07-b9cd-09ebe76fb19c",
-            "content": "艹",
-            "timestamp": 1696664247.7504058
-        },
-        {
-            "user_id": "6a051e48-eecf-4f07-b9cd-09ebe76fb19c",
-            "content": "你在说什么",
-            "timestamp": 1696664257.2075088
-        }
     ]
 }
